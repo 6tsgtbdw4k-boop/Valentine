@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:#f3e9f5;
+  font-family: "Segoe UI", sans-serif;
+}
+.envelope{
+  width:260px;
+  height:170px;
+  position:relative;
+  background:#ff7a7a;
+  cursor:pointer;
+}
+.envelope:before,
+.envelope:after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:0;
+  border-style:solid;
+}
+.envelope:before{
+  top:0;
+  left:0;
+  border-width:85px 130px;
+  border-color:#ff9a9a transparent transparent transparent;
+}
+.envelope:after{
+  bottom:0;
+  left:0;
+  border-width:85px 130px;
+  border-color:transparent transparent #ff6b6b transparent;
+}
+.letter{
+  position:absolute;
+  top:20px;
+  left:15px;
+  width:230px;
+  height:130px;
+  background:#fff;
+  padding:12px;
+  box-sizing:border-box;
+  text-align:center;
+  font-family:cursive;
+  transform:translateY(60px);
+  transition:0.5s;
+  z-index:-1;
+}
+.envelope.open .letter{
+  transform:translateY(-10px);
+  z-index:1;
+}
+.buttons{
+  margin-top:20px;
+}
+button{
+  padding:10px 25px;
+  margin:0 10px;
+  font-size:16px;
+  border:2px solid #d65b5b;
+  background:#fff;
+  color:#d65b5b;
+  border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<div class="envelope" id="env">
+  <div class="letter">
+    <b>To: My Love</b><br><br>
+    Dear love,<br>
+    every time I see you,<br>
+    my world stops ❤️
+  </div>
+</div>
+
+<div class="buttons">
+  <button onclick="openEnv()">OPEN</button>
+  <button onclick="closeEnv()">CLOSE</button>
+</div>
+
+<script>
+function openEnv(){
+  document.getElementById("env").classList.add("open");
+}
+function closeEnv(){
+  document.getElementById("env").classList.remove("open");
+}
+</script>
+
+</body>
+</html>
