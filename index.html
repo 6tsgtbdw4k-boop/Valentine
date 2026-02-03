@@ -3,100 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <title>For You ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:#f3e9f5;
-  font-family: "Segoe UI", sans-serif;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7eef5;
+  font-family: cursive;
 }
-.envelope{
-  width:260px;
-  height:170px;
-  position:relative;
-  background:#ff7a7a;
-  cursor:pointer;
+
+.container {
+  text-align: center;
 }
-.envelope:before,
-.envelope:after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:0;
-  border-style:solid;
+
+.envelope {
+  width: 200px;
+  height: 120px;
+  background: #ff6f61;
+  position: relative;
+  margin: auto;
 }
-.envelope:before{
-  top:0;
-  left:0;
-  border-width:85px 130px;
-  border-color:#ff9a9a transparent transparent transparent;
+
+.envelope::before,
+.envelope::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
 }
-.envelope:after{
-  bottom:0;
-  left:0;
-  border-width:85px 130px;
-  border-color:transparent transparent #ff6b6b transparent;
+
+.envelope::before {
+  top: 0;
+  left: 0;
+  border-width: 60px 100px 0 100px;
+  border-color: #ff9a8b transparent transparent transparent;
 }
-.letter{
-  position:absolute;
-  top:20px;
-  left:15px;
-  width:230px;
-  height:130px;
-  background:#fff;
-  padding:12px;
-  box-sizing:border-box;
-  text-align:center;
-  font-family:cursive;
-  transform:translateY(60px);
-  transition:0.5s;
-  z-index:-1;
+
+.envelope::after {
+  bottom: 0;
+  left: 0;
+  border-width: 0 100px 60px 100px;
+  border-color: transparent transparent #ff6f61 transparent;
 }
-.envelope.open .letter{
-  transform:translateY(-10px);
-  z-index:1;
+
+#letter {
+  display: none;
+  background: white;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
 }
-.buttons{
-  margin-top:20px;
-}
-button{
-  padding:10px 25px;
-  margin:0 10px;
-  font-size:16px;
-  border:2px solid #d65b5b;
-  background:#fff;
-  color:#d65b5b;
-  border-radius:6px;
+
+button {
+  margin: 10px;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: 1px solid #ff6f61;
+  background: white;
+  color: #ff6f61;
+  cursor: pointer;
 }
 </style>
 </head>
+
 <body>
+<div class="container">
 
-<div class="envelope" id="env">
-  <div class="letter">
-    <b>To: My Love</b><br><br>
-    Dear love,<br>
-    every time I see you,<br>
-    my world stops ❤️
+  <div class="envelope"></div>
+
+  <div id="letter">
+    <p>Dear love ❤️</p>
+    <p>Every time I see you,</p>
+    <p>my world stops.</p>
   </div>
-</div>
 
-<div class="buttons">
-  <button onclick="openEnv()">OPEN</button>
-  <button onclick="closeEnv()">CLOSE</button>
+  <button onclick="openLetter()">OPEN</button>
+  <button onclick="closeLetter()">CLOSE</button>
+
 </div>
 
 <script>
-function openEnv(){
-  document.getElementById("env").classList.add("open");
+function openLetter() {
+  document.getElementById("letter").style.display = "block";
 }
-function closeEnv(){
-  document.getElementById("env").classList.remove("open");
+
+function closeLetter() {
+  document.getElementById("letter").style.display = "none";
 }
 </script>
 
