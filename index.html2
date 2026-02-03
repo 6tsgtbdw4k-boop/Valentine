@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffe6f0;
+  font-family: cursive;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Balloon */
+.balloon {
+  width: 150px;
+  height: 190px;
+  background: pink;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  animation: float 2s ease-in-out infinite;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  width: 2px;
+  height: 45px;
+  background: #999;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* Message */
+#message {
+  display: none;
+  margin-top: 25px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+/* Balloon pop */
+.pop {
+  animation: pop 0.3s forwards;
+}
+
+@keyframes pop {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: #ff4d88;
+  font-size: 20px;
+  animation: rise 4s linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="balloon" id="balloon" onclick="popBalloon()"></div>
+
+  <div id="message">
+    <p>Hey Disha baby 💕</p>
+    <p>Will you be my Valentine? 💖</p>
+  </div>
+</div>
+
+<script>
+function popBalloon() {
+  document.getElementById("balloon").classList.add("pop");
+
+  setTimeout(() => {
+    document.getElementById("message").style.display = "block";
+    startHearts();
+  }, 300);
+}
+
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }, 300);
+}
+</script>
+
+</body>
+</html>
